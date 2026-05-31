@@ -1,0 +1,38 @@
+{
+  "name": "sharkly-agent",
+  "version": "0.1.0",
+  "description": "🦈 Sharkly — Hedera AI Agent that hunts the SentX NFT marketplace in natural language. Built with the Hedera Agent Kit (LangChain toolkit) + hak-sharkly-plugin. Project structure mirrors what Hedera Agent Lab exports.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "cli": "node index.js"
+  },
+  "keywords": [
+    "hedera",
+    "hedera-agent-kit",
+    "agent-lab",
+    "sharkly",
+    "sentx",
+    "nft",
+    "langchain",
+    "ai-agent"
+  ],
+  "author": "Guillermo (@aguille_)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@hashgraph/hedera-agent-kit": "^4.0.0",
+    "@hashgraph/hedera-agent-kit-langchain": "^1.0.0",
+    "@hiero-ledger/sdk": "^2.84.0",
+    "@langchain/anthropic": "^1.0.0",
+    "@langchain/openai": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "hak-sharkly-plugin": "file:./plugin",
+    "langchain": "^1.0.0"
+  }
+}

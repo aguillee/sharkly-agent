@@ -1,0 +1,48 @@
+{
+  "name": "hak-sharkly-plugin",
+  "version": "0.1.0",
+  "description": "Sharkly — Hedera Agent Kit plugin that hunts the SentX NFT marketplace. Read-only access to listings, floor, activity, top collections and stats. Write endpoints (buy/list NFT) ship next, pending SentX affiliate approval.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx examples/agent.ts",
+    "demo": "tsx examples/agent.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "hedera",
+    "hedera-agent-kit",
+    "sharkly",
+    "sentx",
+    "nft",
+    "marketplace",
+    "ai-agent",
+    "langchain"
+  ],
+  "author": "Guillermo (@aguille_)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@hashgraph/hedera-agent-kit": "^4.0.0",
+    "@hashgraph/hedera-agent-kit-langchain": "^1.0.0",
+    "@hiero-ledger/sdk": "^2.84.0",
+    "@langchain/core": "^1.0.0",
+    "@langchain/openai": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "langchain": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}

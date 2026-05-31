@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <title>Sharkly — Hunt the Hedera NFT market with AI</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Vertical sidebar (decorative + future nav) -->
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="sidebar-avatar" title="Sharkly">
+          <img src="/logo.png" alt="Sharkly" />
+        </div>
+        <span class="sidebar-label">Sharkly</span>
+
+        <nav class="sidebar-nav">
+          <button class="sidebar-item active" id="nav-chat" title="Chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </button>
+          <button class="sidebar-item" id="nav-analytics" title="Analytics (NFT history)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </button>
+          <a class="sidebar-item" id="nav-wallet" title="View wallet on HashScan" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="sidebar-item" title="Settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main column -->
+      <div class="main">
+        <header class="app-header">
+          <div class="brand">
+            <span class="brand-icon" aria-hidden="true">
+              <img src="/logo.png" alt="" />
+            </span>
+            <h1>Sharkly</h1>
+          </div>
+          <div class="meta">
+            <a id="wallet-pill" class="wallet-pill" href="#" target="_blank" rel="noopener" title="View account on HashScan">
+              <span class="wallet-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              </span>
+              <span class="wallet-body">
+                <span class="wallet-account" id="wallet-account">—</span>
+                <span class="wallet-balance" id="wallet-balance">— HBAR</span>
+              </span>
+            </a>
+            <button class="reset-btn" id="reset-btn" title="Clear conversation" aria-label="Reset">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <span>Reset</span>
+            </button>
+            <!-- model/tools meta hidden — kept as off-screen elements so existing JS doesn't break -->
+            <span id="model-name" hidden>—</span>
+            <span id="tools-count" hidden>—</span>
+          </div>
+        </header>
+
+        <main class="chat" id="chat">
+          <section class="welcome" id="welcome">
+            <h2>What's the Hedera NFT market doing right now?</h2>
+            <p>Pick a prompt to start hunting, or type your own.</p>
+            <div class="suggestions" id="suggestions"></div>
+          </section>
+        </main>
+
+        <form class="composer" id="composer" autocomplete="off">
+          <textarea
+            id="input"
+            placeholder="Ask anything about Hedera NFTs…"
+            rows="1"
+            autofocus
+          ></textarea>
+          <button type="submit" id="send-btn" disabled aria-label="Send">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Analytics modal -->
+    <div class="modal-backdrop" id="analytics-backdrop" hidden>
+      <div class="modal modal-wide" role="dialog" aria-labelledby="analytics-title" aria-modal="true">
+        <div class="modal-head">
+          <div>
+            <h3 id="analytics-title">NFT Activity</h3>
+            <p class="modal-sub" id="analytics-sub">On-chain history for the operator account.</p>
+          </div>
+          <div class="modal-head-actions">
+            <button class="reset-btn" id="analytics-refresh" title="Refresh">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+            <button class="reset-btn" id="analytics-close" title="Close" aria-label="Close">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="analytics-body" id="analytics-body">
+          <div class="analytics-empty">Loading…</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unlisting confirmation modal -->
+    <div class="modal-backdrop" id="unlist-backdrop" hidden>
+      <div class="modal" role="dialog" aria-labelledby="unlist-title" aria-modal="true">
+        <h3 id="unlist-title">Confirm unlisting</h3>
+        <p class="modal-sub">Sharkly will sign a transaction revoking the marketplace allowance. Your NFT was always in your wallet — only the buy permission is removed.</p>
+        <dl class="kv">
+          <dt>Collection</dt><dd id="um-token">—</dd>
+          <dt>Serial</dt><dd id="um-serial">—</dd>
+          <dt>Owner</dt><dd id="um-seller">—</dd>
+          <dt>On-chain signing</dt><dd id="um-approval">—</dd>
+        </dl>
+        <div class="modal-warn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          The listing is removed from SentX. The NFT stays where it already is (your wallet).
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="um-cancel">Cancel</button>
+          <button type="button" class="btn-primary" id="um-confirm">Confirm &amp; sign</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Listing confirmation modal -->
+    <div class="modal-backdrop" id="list-backdrop" hidden>
+      <div class="modal" role="dialog" aria-labelledby="list-title" aria-modal="true">
+        <h3 id="list-title">Confirm listing</h3>
+        <p class="modal-sub">Sharkly will sign an allowance approval. Your NFT STAYS in your wallet — SentX only gets permission to move it when someone buys.</p>
+        <dl class="kv">
+          <dt>Collection</dt><dd id="lm-token">—</dd>
+          <dt>Serial</dt><dd id="lm-serial">—</dd>
+          <dt>Asking price</dt><dd id="lm-price"><strong>—</strong></dd>
+          <dt>From seller</dt><dd id="lm-seller">—</dd>
+          <dt>Approval needed</dt><dd id="lm-approval">—</dd>
+        </dl>
+        <div class="modal-warn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Non-custodial: the NFT never leaves your wallet until it sells.
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="lm-cancel">Cancel</button>
+          <button type="button" class="btn-primary" id="lm-confirm">Confirm &amp; sign</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buy confirmation modal -->
+    <div class="modal-backdrop" id="confirm-backdrop" hidden>
+      <div class="modal" id="confirm-modal" role="dialog" aria-labelledby="confirm-title" aria-modal="true">
+        <h3 id="confirm-title">Confirm purchase</h3>
+        <p class="modal-sub">Sharkly will sign a transaction with your operator account.</p>
+        <dl class="kv">
+          <dt>Collection</dt><dd id="cm-token">—</dd>
+          <dt>Serial</dt><dd id="cm-serial">—</dd>
+          <dt>Price</dt><dd id="cm-price">—</dd>
+          <dt>Commission</dt><dd id="cm-commission">—</dd>
+          <dt>Total cost</dt><dd id="cm-total"><strong>—</strong></dd>
+          <dt>From operator</dt><dd id="cm-operator">—</dd>
+        </dl>
+        <div class="modal-warn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Real HBAR will leave your account. This cannot be undone.
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="cm-cancel">Cancel</button>
+          <button type="button" class="btn-primary" id="cm-confirm">Confirm &amp; sign</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG icon sprites -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+        </symbol>
+        <symbol id="i-shark" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2 L22 20 L12 17 L2 20 Z"/>
+          <circle cx="8.3" cy="15" r="1" fill="#fff"/>
+        </symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
