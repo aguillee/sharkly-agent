@@ -4,7 +4,7 @@
 
 Sharkly is a conversational AI agent that turns the entire [SentX](https://sentx.io) NFT marketplace on Hedera into a chat interface. Browse collections, check floor prices, inspect your wallet, and execute **real on-chain transactions** — buying, listing, and unlisting NFTs — all through natural language.
 
-Built for the **Hedera AI Studio — Week 4: Enterprise Agent + Plugin** bounty.
+Built for the **Hedera AI Studio — Week 2: Enterprise Agent + Plugin** bounty.
 
 ---
 
